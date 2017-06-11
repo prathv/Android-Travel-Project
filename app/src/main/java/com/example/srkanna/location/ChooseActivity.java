@@ -17,12 +17,12 @@ public class ChooseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_activity);
-        TextView tv = (TextView)findViewById(R.id.TV_choose_activity);
+        //TextView tv = (TextView)findViewById(R.id.TV_choose_activity);
         Intent i = getIntent();
         Bundle b = getIntent().getExtras();
         if (b != null ) {
             String getLocation = (String) b.get("location");
-            tv.setText(getLocation);
+          //  tv.setText(getLocation);
         }
 
         mYelpButton = (Button)findViewById(R.id.button4);
