@@ -11,6 +11,7 @@ import android.content.Intent;
 public class MainActivity extends AppCompatActivity {
     Button mButton;
     EditText mEdit;
+    EditText mCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,19 @@ public class MainActivity extends AppCompatActivity {
                 // Start NewActivity.class
                 Intent i = new Intent(MainActivity.this,
                         ChooseActivity.class);
-                mEdit = (EditText)findViewById(R.id.editText1);
-              //  String location = mEdit.getText().toString();
-                i.putExtra("Location",mEdit.getText());
+                mEdit = (EditText)findViewById(R.id.city);
+                mCountry = (EditText)findViewById(R.id.country);
+
+                String city = mEdit.getText().toString();
+                city = city.replace("\\s+","");
+
+                String country = mCountry.getText().toString();
+                country = country.replace("\\s+","");
+
+                String Location = city+","+country;
+
+                //  String location = mEdit.getText().toString();
+                i.putExtra("location",Location);
                  startActivity(i);
             }
         });

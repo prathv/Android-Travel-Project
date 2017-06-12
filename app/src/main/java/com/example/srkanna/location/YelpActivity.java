@@ -43,7 +43,7 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
     private static final int YELP_SEARCH_LOADER_ID = 0;
     private static final String YELP_URL_KEY = "yelpsearchurl";
     private static final String YELP_Auth_KEY = "yelpauthurl";
-
+    private static final String LOCATION = "";
 
 
     @Override
@@ -66,15 +66,20 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
         mYelpSearchAdapter = new YelpSearchAdapter(this);
         mSearchResultsRV.setAdapter(mYelpSearchAdapter);
 
+        Bundle b = getIntent().getExtras();
 
+        String location = b.getString("Location");
+
+        Log.d("Yelpactivity","Bundle Location is "+ location);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 
         String yelpURL = YelpUtils.buildYelpSearchURL(
                 "food",
-                "usa",
+                location,
                 "distance"
         );
+
 
         String yelpauth = YelpUtils.buildYelpauthURL();
         Log.d("YelpActivity","yelp url is "+yelpURL);
@@ -83,9 +88,11 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
         Bundle argsBundle = new Bundle();
         argsBundle.putString(YELP_URL_KEY, yelpURL);
         argsBundle.putString(YELP_Auth_KEY,yelpauth);
+        argsBundle.putString(LOCATION,location);
 
         getSupportLoaderManager().initLoader(YELP_SEARCH_LOADER_ID, argsBundle, this);
 
+        mSearchBoxLoc.setText(location);
 
         //getSupportLoaderManager().restartLoader(YELP_SEARCH_LOADER_ID,argsBundle,this);
 
@@ -170,7 +177,9 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
                     Log.d("Mainactivity","Loaded first background call");
                     String yelpurl = args.getString(YELP_URL_KEY);
                     String yelpauth = args.getString(YELP_Auth_KEY);
+                    String location = args.getString(LOCATION);
 
+                   // mSearchBoxLoc.setText(location);
                     Log.d("Mainactivity", "AsyncTaskLoader making network call: " + yelpurl);
                     String getresult = "";
 
@@ -255,6 +264,7 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
         Bundle argsBundle = new Bundle();
         argsBundle.putString(YELP_URL_KEY,yelpurl);
         argsBundle.putString(YELP_Auth_KEY,yelpauth);
+        argsBundle.putString(LOCATION,"Seattle,us");
         getSupportLoaderManager().restartLoader(YELP_SEARCH_LOADER_ID,argsBundle,this);
     }
 

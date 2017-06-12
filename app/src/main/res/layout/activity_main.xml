@@ -9,42 +9,59 @@
     <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="39dp"
             android:ems="10"
+            android:hint="enter a city"
             android:inputType="textPersonName"
-            android:hint="enter a location"
-            tools:text="This is a test" />
+            tools:text="Enter a city" />
+
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/city"
+            android:layout_marginTop="39dp"
+            android:ems="10"
+            android:hint="enter a country"
+            android:inputType="textPersonName"
+            tools:text="Enter a country"
+            android:layout_alignLeft="@+id/button_location"
+            android:layout_alignStart="@+id/button_location" />
 
         <Button
             android:id="@+id/button_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText1"
+            android:layout_below="@+id/country"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="48dp"
             android:text="Search" />
+
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/paris"
-            android:layout_marginBottom="38dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="38dp"
+            app:srcCompat="@drawable/paris" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
