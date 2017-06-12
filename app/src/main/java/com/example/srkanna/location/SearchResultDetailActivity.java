@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.srkanna.location.utils.YelpUtils;
-import com.example.srkanna.location.R;
 
 import java.io.InputStream;
 
@@ -36,7 +35,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result_detail);
+        setContentView(R.layout.yelp_activity_search_result_detail);
 
         mSearchResultNameTV = (TextView)findViewById(R.id.tv_search_result_name);
         mSearchResultDescriptionTV = (TextView)findViewById(R.id.tv_search_result_description);
