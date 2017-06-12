@@ -17,6 +17,11 @@
             android:textSize="20dp"
             android:text="TRAVEL APP"
             android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <EditText
             android:id="@+id/city"
             android:layout_width="wrap_content"
@@ -38,7 +43,7 @@
             android:inputType="textPersonName"
             tools:text="Enter a country"
             />
-
+        </LinearLayout>
         <Button
             android:id="@+id/button_location"
             android:layout_width="wrap_content"
@@ -52,19 +57,24 @@
         android:orientation="horizontal"
         android:background="#78909C">
 
-        <ImageView
-        android:id="@+id/imageView7"
+        <ImageButton
+            android:text="@string/paris"
+        android:id="@+id/paris"
         android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
             android:scaleType="fitXY"
-        app:srcCompat="@drawable/paris" />
+        app:srcCompat="@drawable/paris"
+        android:background="@drawable/mainstyle"
+            />
 
-        <ImageView
-            android:id="@+id/imageView6"
+        <ImageButton
+            android:text="@string/singapore"
+            android:id="@+id/singapore"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/paris" />
+            android:background="@drawable/mainstyle"
+            app:srcCompat="@drawable/singapore" />
 
     </LinearLayout>
 
@@ -74,19 +84,22 @@
         android:orientation="horizontal"
         android:background="#607D8B">
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <ImageButton
+            android:text="@string/tokyo"
+            android:id="@+id/tokyo"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/paris" />
+            android:background="@drawable/mainstyle"
+            app:srcCompat="@drawable/tokyo" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <ImageButton
+            android:text="@string/newyork"
+            android:id="@+id/newyork"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/paris" />
+            app:srcCompat="@drawable/newyork" />
 
 
     </LinearLayout>
@@ -97,19 +110,21 @@
         android:orientation="horizontal"
         android:background="#546E7A">
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <ImageButton
+            android:text="@string/dubai"
+            android:id="@+id/dubai"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/paris" />
+            app:srcCompat="@drawable/dubai" />
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <ImageButton
+            android:text="@string/london"
+            android:id="@+id/london"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/paris" />
+            app:srcCompat="@drawable/london" />
 
 
     </LinearLayout>
