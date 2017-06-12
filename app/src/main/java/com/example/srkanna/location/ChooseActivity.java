@@ -1,13 +1,11 @@
 package com.example.srkanna.location;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.content.Intent;
 
 
 
@@ -15,6 +13,7 @@ public class ChooseActivity extends AppCompatActivity {
 
     private Button mYelpButton;
     private Button mOpenWeatherButton;
+    private Button mDirections;
     String getLocation = new String();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +52,18 @@ public class ChooseActivity extends AppCompatActivity {
                 Intent weatherIntent = new Intent(ChooseActivity.this, OpenWeatherActivity.class);
                 weatherIntent.putExtra("Location", getLocation); // pass it the city, state info
                 startActivity(weatherIntent); // launch the activity
+            }
+        });
+
+        mDirections = (Button) findViewById(R.id.directions);
+
+        mDirections.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent i = new Intent(ChooseActivity.this, DirectionsAcitivity.class);
+                //  String location = mEdit.getText().toString();
+                startActivity(i);
             }
         });
     }

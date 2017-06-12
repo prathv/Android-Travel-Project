@@ -14,11 +14,11 @@ import java.util.ArrayList;
  * Created by hessro on 4/21/17.
  */
 
-public class GitHubSearchAdapter extends RecyclerView.Adapter<GitHubSearchAdapter.SearchResultViewHolder> {
+public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.SearchResultViewHolder> {
     private ArrayList<DirectionsUtils.SearchResult> mSearchResultsList;
     private OnSearchResultClickListener mSearchResultClickListener;
 
-    public GitHubSearchAdapter() {
+    public DirectionAdapter() {
 
     }
 

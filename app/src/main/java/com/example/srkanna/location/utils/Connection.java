@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithlifecycle.utils;
+package com.example.srkanna.location.utils;
 
 import java.io.IOException;
 

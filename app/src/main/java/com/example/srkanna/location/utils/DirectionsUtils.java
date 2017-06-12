@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithlifecycle.utils;
+package com.example.srkanna.location.utils;
 
 import android.util.Log;
 
@@ -9,9 +9,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by hessro on 4/25/17.
- */
+
 
 public class DirectionsUtils {
 

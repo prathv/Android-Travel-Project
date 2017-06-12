@@ -54,7 +54,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
 
 
             <Button
@@ -70,13 +71,27 @@
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Hotels"
-                android:textSize="20dp"
                 android:background="@drawable/back"
-                />
+                android:text="Hotels"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/directions"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="42.27"
+                android:background="@drawable/back"
+                android:text="Directions"
+                android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
