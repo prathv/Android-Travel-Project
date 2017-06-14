@@ -136,6 +136,13 @@ public class YelpActivity extends AppCompatActivity implements YelpSearchAdapter
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.action_directions:
+                Log.d("Mainactivity","Entered directions settings");
+                mSearchBoxLoc = (EditText)findViewById(R.id.et_search_location);
+                String location = mSearchBoxLoc.getText().toString();
+                Intent directionIntent = new Intent(this, DirectionsAcitivity.class);
+                directionIntent.putExtra("Location",location);
+                startActivity(directionIntent);
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -21,11 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseActivity"></activity>
+        <activity android:name=".ChooseActivity"
+            android:parentActivityName=".MainActivity"></activity>
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.srkanna.location.YelpActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".ChooseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +37,8 @@
 
         <activity
             android:name="com.example.srkanna.location.OpenWeatherActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".ChooseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +66,8 @@
         </activity>
         <activity
             android:name="com.example.srkanna.location.DirectionsAcitivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".ChooseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,6 +6,14 @@
         android:id="@+id/action_settings"
         android:title="Settings"
         android:orderInCategory="2"
+        android:icon="@drawable/ic_settings_black_24dp"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_directions"
+        android:title="Directions"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_directions_black_24dp"
         app:showAsAction="ifRoom" />
 
 </menu>
