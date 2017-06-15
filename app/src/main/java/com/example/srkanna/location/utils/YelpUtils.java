@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -42,6 +41,8 @@ public class YelpUtils {
         public String name;
         public int rating;
         public String imageUrl;
+        public String lati;
+        public String longi;
     }
 
 
@@ -100,6 +101,8 @@ public class YelpUtils {
                 searchResult.id = searchResultItem.getString("id");
                 searchResult.rating = Math.round(Float.valueOf(searchResultItem.getString("rating")));
                 searchResult.imageUrl = searchResultItem.getString("image_url");
+                searchResult.lati = searchResultItem.getJSONObject("coordinates").getString("latitude");
+                searchResult.longi = searchResultItem.getJSONObject("coordinates").getString("longitude");
 
                 Log.d("Utils","Rating is "+ searchResult.rating);
                 searchResultsList.add(searchResult);

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +32,10 @@ public class SearchResultDetailActivity extends AppCompatActivity {
     private ImageView mSearchResultStar4;
     private ImageView mSearchResultStar5;
     private ImageView mSearchResultYelpPic;
+    private String latu;
+    private String longu;
+
+    private Button mviewOnMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +51,14 @@ public class SearchResultDetailActivity extends AppCompatActivity {
         mSearchResultStar4 = (ImageView)findViewById(R.id.star4);
         mSearchResultStar5 = (ImageView)findViewById(R.id.star5);
         mSearchResultYelpPic = (ImageView) findViewById(R.id.YelpImage);
+        mviewOnMap =(Button) findViewById(R.id.viewonmap);
         Intent intent = getIntent();
 
         if (intent != null && intent.hasExtra(YelpUtils.SearchResult.EXTRA_SEARCH_RESULT)) {
             mSearchResult = (YelpUtils.SearchResult)intent.getSerializableExtra(YelpUtils.SearchResult.EXTRA_SEARCH_RESULT);
             mSearchResultNameTV.setText(mSearchResult.fullName);
+            latu = mSearchResult.lati;
+            longu = mSearchResult.longi;
 
             if(mSearchResult.description.compareTo("false")==1){
                 mSearchResultDescriptionTV.setText("Not Closed");
@@ -77,6 +85,17 @@ public class SearchResultDetailActivity extends AppCompatActivity {
 
             mSearchResultPhone.setText(mSearchResult.phone);
         }
+
+        mviewOnMap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg) {
+                Intent weatherIntent = new Intent(SearchResultDetailActivity.this, DirectionsAcitivityForYelp.class);
+                weatherIntent.putExtra("latu", latu);
+                weatherIntent.putExtra("longu", longu);
+                // pass it the city, state info
+                startActivity(weatherIntent); // launch the activity
+            }
+        });
+
     }
 
     @Override
