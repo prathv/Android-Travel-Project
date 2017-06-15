@@ -32,7 +32,7 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/back"
                 android:text="Weather"
@@ -41,13 +41,7 @@
                 />
 
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/back"
-                android:text="Images"
-                android:textSize="20dp" />
+
 
         </LinearLayout>
 
@@ -60,20 +54,13 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Yelp"
+                android:text="Hotels/Restaurants"
                 android:textSize="20dp"
                 android:background="@drawable/back"
                 />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/back"
-                android:text="Hotels"
-                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -87,7 +74,6 @@
                 android:id="@+id/directions"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_weight="42.27"
                 android:background="@drawable/back"
                 android:text="Directions"
                 android:textSize="20dp" />
