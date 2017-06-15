@@ -82,7 +82,7 @@
             android:value="AIzaSyDudMSaa4QfZT4JL-I6hbMuAHjyP_eX5tk" />
         <activity
             android:name=".MapsMarkerActivityForYelp"
-            android:label="@string/title_activity_maps">
+            android:label=" Location">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -92,7 +92,17 @@
 
         <activity
             android:name=".DirectionsAcitivityForYelp"
-            android:label="@string/title_activity_maps">
+            android:label="Fetching Location">
+
+        </activity>
+        <activity
+            android:name=".PolygonAcitivityForRoute"
+            android:label="Location">
+
+        </activity>
+        <activity
+            android:name=".PolygonActivityForAsyncLoader"
+            android:label="Fetching Location">
 
         </activity>
     </application>

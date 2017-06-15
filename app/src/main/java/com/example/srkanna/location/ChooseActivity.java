@@ -15,6 +15,7 @@ public class ChooseActivity extends AppCompatActivity {
     private Button mOpenWeatherButton;
     private Button mDirections;
     String getLocation = new String();
+    Bundle b;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class ChooseActivity extends AppCompatActivity {
 
         //TextView tv = (TextView)findViewById(R.id.TV_choose_activity);
         Intent i = getIntent();
-        Bundle b = getIntent().getExtras();
+        b = getIntent().getExtras();
 
         if (b != null) {
             getLocation = (String) b.get("location");
@@ -61,8 +62,12 @@ public class ChooseActivity extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 // Start NewActivity.class
-                Intent i = new Intent(ChooseActivity.this, DirectionsAcitivity.class);
+
+//                Bundle b = getIntent().getExtras();
+//                String locaa=(String) b.get("location");
+                Intent i = new Intent(ChooseActivity.this, PolygonActivityForAsyncLoader.class);
                 //  String location = mEdit.getText().toString();
+                i.putExtra("Location", getLocation);
                 startActivity(i);
             }
         });

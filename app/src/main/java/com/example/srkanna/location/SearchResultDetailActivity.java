@@ -34,7 +34,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
     private ImageView mSearchResultYelpPic;
     private String latu;
     private String longu;
-
+    private String nameOfLocation;
     private Button mviewOnMap;
 
     @Override
@@ -59,6 +59,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
             mSearchResultNameTV.setText(mSearchResult.fullName);
             latu = mSearchResult.lati;
             longu = mSearchResult.longi;
+            nameOfLocation = mSearchResult.fullName;
 
             if(mSearchResult.description.compareTo("false")==1){
                 mSearchResultDescriptionTV.setText("Not Closed");
@@ -91,6 +92,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
                 Intent weatherIntent = new Intent(SearchResultDetailActivity.this, DirectionsAcitivityForYelp.class);
                 weatherIntent.putExtra("latu", latu);
                 weatherIntent.putExtra("longu", longu);
+                weatherIntent.putExtra("locationformarker", nameOfLocation);
                 // pass it the city, state info
                 startActivity(weatherIntent); // launch the activity
             }

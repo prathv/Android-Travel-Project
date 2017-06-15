@@ -53,6 +53,16 @@ public class DirectionsUtils {
 
     }
 
+    public static String buildURLForPolyline(String origin, String latAndLong) {
+        return Uri.parse(GITHUB_SEARCH_BASE_URL).buildUpon()
+                .appendQueryParameter(GITHUB_SEARCH_QUERY_PARAM,origin)
+                .appendQueryParameter(GITHUB_SEARCH_SORT_PARAM, latAndLong)
+                .appendQueryParameter("key", API_KEY)
+                .build()
+                .toString();
+
+    }
+
     public static ArrayList<SearchResult> parseGitHubSearchResultsJSON(String searchResultsJSON) {
         try {
             JSONObject searchResultsObj = new JSONObject(searchResultsJSON);
@@ -96,6 +106,49 @@ public class DirectionsUtils {
         }
 
         }
+
+    public static String returnCoordinatesForPolyline(String searchResultJSON) {
+
+        StringBuilder listOfLatAndLongs = new StringBuilder();
+        ArrayList<String> allLatAndLongs = new ArrayList<>();
+        try {
+
+            JSONObject searchResultsObj = new JSONObject(searchResultJSON);
+            JSONArray searchResultsRoutes = searchResultsObj.getJSONArray("routes");
+            JSONArray searchResultsLegs = searchResultsRoutes.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
+
+            for(int i=0;i<searchResultsLegs.length();i++) {
+
+                JSONObject directionItem = searchResultsLegs.getJSONObject(i).getJSONObject("end_location");
+
+                allLatAndLongs.add(directionItem.getString("lat"));
+                allLatAndLongs.add(directionItem.getString("lng"));
+
+
+            }
+            Log.d("sizing", "AsyncTaskLoader making network call xxaax: " + allLatAndLongs.size());
+            for (int i=0;i<allLatAndLongs.size();i++)
+            {
+                if(i==(allLatAndLongs.size()-1)) {
+                    Log.d("testingi", "AsyncTaskLoader making network call xxaax: " + allLatAndLongs.get(i));
+                    listOfLatAndLongs.append(allLatAndLongs.get(i).toString());
+
+                }
+                else {
+                    Log.d("testingii", "AsyncTaskLoader making network call xxaax: " + allLatAndLongs.get(i));
+                    listOfLatAndLongs.append(allLatAndLongs.get(i)).append(",");
+
+                }
+
+                }
+
+            return listOfLatAndLongs.toString();
+        }
+        catch (Exception e) {
+            return null;
+        }
+
+    }
 
     public static String endLocation(String searchResultJSON) {
         Map<String,String> latAndLong = new HashMap<>();

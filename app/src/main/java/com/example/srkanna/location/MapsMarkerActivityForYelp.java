@@ -8,6 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -16,6 +17,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class MapsMarkerActivityForYelp extends AppCompatActivity
         implements OnMapReadyCallback {
+
+    UiSettings uiSettings= null;
 
     String lati=null;
     String longi=null;
@@ -35,6 +38,7 @@ public class MapsMarkerActivityForYelp extends AppCompatActivity
 
         lati = b.getString("latiFromDirectionYelp");
         longi = b.getString("longiFromDirectionYelp");
+        endLocation = b.getString("locationformarker");
         String[] output = temp.split(",");
         Log.d("lati is",lati);
         Log.d("longi is", longi);
@@ -79,10 +83,14 @@ public class MapsMarkerActivityForYelp extends AppCompatActivity
 //
 //        Log.d("lat",latAndLong.get("lat"));
 //        Log.d("long",latAndLong.get("long"));
-        googleMap.setMinZoomPreference(13.0f);
+
+        uiSettings = googleMap.getUiSettings();
+        googleMap.setMinZoomPreference(3.0f);
         googleMap.setMaxZoomPreference(20.0f);
+
+        uiSettings.setZoomControlsEnabled(true);
         googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in "+endLocation));
+                .title("Your selection:  "+endLocation));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

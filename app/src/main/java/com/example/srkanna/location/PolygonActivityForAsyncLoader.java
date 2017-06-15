@@ -17,13 +17,12 @@ import com.example.srkanna.location.utils.Connection;
 import com.example.srkanna.location.utils.DirectionsUtils;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-public class DirectionsAcitivityForYelp extends AppCompatActivity
+public class PolygonActivityForAsyncLoader extends AppCompatActivity
         implements  LoaderManager.LoaderCallbacks<String> {
 
     String latitude,longitude, locationformarker;
-    private static final String TAG = DirectionsAcitivityForYelp.class.getSimpleName();
+    private static final String TAG = PolygonActivityForAsyncLoader.class.getSimpleName();
     private static final String SEARCH_URL_KEY = "directionURL";
     private static final int DIRECETION_LOADER_ID = 1;
 
@@ -59,11 +58,10 @@ public class DirectionsAcitivityForYelp extends AppCompatActivity
 
         Bundle args = getIntent().getExtras();
 
-        latitude = args.getString("latu");
-        longitude = args.getString("longu");
-        locationformarker = args.getString("locationformarker");
-        String latandLong = latitude+"," +longitude;
-        String tempLatlong = DirectionsUtils.buildURLForMapMarker("Lyon" ,latandLong);
+
+        locationformarker = args.getString("Location");
+      //  String latandLong = latitude+"," +longitude;
+        String tempLatlong = DirectionsUtils.buildURLForPolyline("Baltimore" ,locationformarker);
         Log.d("Making the URL", tempLatlong);
         args.putString(SEARCH_URL_KEY,tempLatlong);
 
@@ -115,25 +113,22 @@ public class DirectionsAcitivityForYelp extends AppCompatActivity
             public String loadInBackground() {
                 if (args != null) {
                     String githubSearchUrl = args.getString(SEARCH_URL_KEY);
-                    Log.d(TAG, "AsyncTaskLoader making network call: " + githubSearchUrl);
+                    Log.d(TAG, "AsyncTaskLoader making network call xxcx: " + githubSearchUrl);
                     String searchResults = null;
-                    Map<String,String> latAndLong=null;
+                    String latAndLong=null;
                     String temp=null;
                     try {
                         searchResults = Connection.doHTTPGet(githubSearchUrl);
                         if(!searchResults.isEmpty()) {
 
-                             latAndLong = DirectionsUtils.returnLatAndLong(searchResults);
+                             latAndLong = DirectionsUtils.returnCoordinatesForPolyline(searchResults);
 
-                            String address = DirectionsUtils.endLocation(searchResults);
-
-                            temp = latAndLong.get("lat") +","+ latAndLong.get("lng")+","+address;
 
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    return temp;
+                    return latAndLong;
                 } else {
                     return null;
                 }
@@ -152,11 +147,9 @@ public class DirectionsAcitivityForYelp extends AppCompatActivity
         Log.d(TAG, "AsyncTaskLoader's onLoadFinished called");
         mLoadingIndicatorDirectionPB.setVisibility(View.INVISIBLE);
         if (data != null) {
-            Intent i = new Intent(this, MapsMarkerActivityForYelp.class);
-            i.putExtra("locationLatAndLong", data );
-            i.putExtra("latiFromDirectionYelp", latitude);
-            i.putExtra("longiFromDirectionYelp", longitude);
-            i.putExtra("locationformarker", locationformarker);
+            Intent i = new Intent(this, PolygonAcitivityForRoute.class);
+            i.putExtra("latAndLong", data );
+
             startActivity(i);
         } else {
         Log.d("No data", "Sorry, no data returned");
