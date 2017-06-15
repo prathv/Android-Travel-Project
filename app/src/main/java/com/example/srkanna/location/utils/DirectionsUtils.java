@@ -24,19 +24,9 @@ public class DirectionsUtils {
     public static class SearchResult implements Serializable {
         public static final String EXTRA_SEARCH_RESULT = "DirectionsUtils.SearchResult";
         public String steps;
-//        public String fullName;
-//        public String description;
-//        public String htmlURL;
-//        public int stars;
+
     }
 
-//    public static String buildGitHubSearchURL(String searchQuery) {
-//        return Uri.parse(GITHUB_SEARCH_BASE_URL).buildUpon()
-//                .appendQueryParameter(GITHUB_SEARCH_QUERY_PARAM, searchQuery)
-//                .appendQueryParameter(GITHUB_SEARCH_SORT_PARAM, GITHUB_SEARCH_DEFAULT_SORT)
-//                .build()
-//                .toString();
-//    }
 
     public static String buildGitHubSearchURL(String searchQuery) {
     return "https://maps.googleapis.com/maps/api/directions/json?origin=Corvallis&destination=Portland,OR&mode=transit&key=AIzaSyBkm5Tsa1eKScVBsXo277WBTdFo4i-YvXc";

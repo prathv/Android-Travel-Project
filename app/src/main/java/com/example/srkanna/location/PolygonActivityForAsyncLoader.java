@@ -66,28 +66,9 @@ public class PolygonActivityForAsyncLoader extends AppCompatActivity
         args.putString(SEARCH_URL_KEY,tempLatlong);
 
         getSupportLoaderManager().initLoader(DIRECETION_LOADER_ID, args, this);
-/**
-        Button searchButton = (Button)findViewById(R.id.btn_search_direction);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String searchQuery = mDirectionBoxET.getText().toString();
 
-                if (!TextUtils.isEmpty(searchQuery)) {
-                    doDirectionSearch(searchQuery);
-                }
-            }
-        });
-**/
     }
-//
-//    private void doDirectionSearch(String searchQuery) {
-//
-//        String tempLatlong = DirectionsUtils.buildURLForMapMarker("Mumbai" , "Pune");
-//        Bundle argsBundle = new Bundle();
-//        argsBundle.putString(SEARCH_URL_KEY, tempLatlong);
-//        getSupportLoaderManager().restartLoader(DIRECETION_LOADER_ID, argsBundle, this);
-//    }
+
 
 
     @Override
